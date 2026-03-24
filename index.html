@@ -378,6 +378,61 @@
     margin-top: 0.2rem;
   }
 
+
+  /* ── RESERVE BOX ── */
+  .reserve-box {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    border: 1px dashed #B3D9F2;
+  }
+
+  .reserve-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0099CC;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .reserve-grid {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .reserve-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    background: #F0F7FF;
+    border-radius: 10px;
+  }
+
+  .reserve-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .reserve-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .reserve-value {
+    font-size: 0.83rem;
+    color: var(--text);
+    margin-top: 0.15rem;
+    font-weight: 500;
+  }
+
   /* ── DIVIDER ── */
   .city-divider {
     width: 100%;
@@ -624,10 +679,10 @@
 ══════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-map"></div>
-  <div class="hero-badge">Junio 2025 · 6 viajeros · Costa Rica → Europa</div>
+  <div class="hero-badge">Junio 2026 · Costa Rica → Europa</div>
   <div class="hero-flag-row">🇨🇷 ✈️ 🇪🇸 🇮🇹 🇫🇷</div>
   <h1 class="hero-title">Nuestra <em>Europa</em></h1>
-  <p class="hero-subtitle">Un viaje de 20 noches por cuatro ciudades extraordinarias</p>
+  <p class="hero-subtitle">Un viaje de 20 noches · 5 en Madrid la primera noche · 6 reunidos en Barcelona</p>
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="hero-stat-num">4</span>
@@ -638,7 +693,7 @@
       <span class="hero-stat-label">Noches</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num">6</span>
+      <span class="hero-stat-num">3→6</span>
       <span class="hero-stat-label">Viajeros</span>
     </div>
     <div class="hero-stat">
@@ -678,6 +733,7 @@
         <div class="city-tag">🇪🇸 España · Parada 1</div>
         <h2 class="city-name">Madrid</h2>
         <p class="city-dates">10 – 13 de junio · 3 noches</p>
+        <p style="font-size:0.78rem; margin-top:0.4rem; background:#FFF3CD; color:#856404; padding:0.3rem 0.8rem; border-radius:99px; display:inline-block;">👥 Noche del 10: 5 juntos · Del 11 al 13: solo 3 · Papás viajan a Grenoble 🇫🇷</p>
       </div>
     </div>
 
@@ -686,13 +742,13 @@
       <div class="day-card fade-in">
         <div class="day-num"><span class="d">10</span><span class="m">Jun</span></div>
         <div class="day-content">
-          <div class="day-label">Día 1</div>
-          <div class="day-title">Llegada y primer sabor madrileño</div>
+          <div class="day-label">Día 1 · Llegada 1:55 PM · 5 juntos esta noche</div>
+          <div class="day-title">Aterrizaje en Madrid · Primera noche familiar</div>
           <div class="day-activities">
-            <span class="activity">✈️ Llegada</span>
-            <span class="activity">🏨 Check-in</span>
+            <span class="activity">✈️ Llegada 1:55 PM</span>
+            <span class="activity">🏨 Check-in · 5 personas</span>
             <span class="activity">🚶 Exploración libre</span>
-            <span class="activity">🥂 Primera cena española</span>
+            <span class="activity">🥂 Primera cena familiar en España</span>
           </div>
         </div>
       </div>
@@ -700,12 +756,12 @@
       <div class="day-card fade-in">
         <div class="day-num"><span class="d">11</span><span class="m">Jun</span></div>
         <div class="day-content">
-          <div class="day-label">Día 2</div>
-          <div class="day-title">Arte, historia y tapas</div>
+          <div class="day-label">Día 2 · Papás parten a Grenoble</div>
+          <div class="day-title">Arte, historia y tapas · Ya somos 3</div>
           <div class="day-activities">
+            <span class="activity">👋 Papás salen a Grenoble 🇫🇷</span>
             <span class="activity">🎨 Museo del Prado</span>
             <span class="activity">🌿 Parque del Retiro</span>
-            <span class="activity">🫙 Ruta de tapas</span>
             <span class="activity">🌃 Malasaña de noche</span>
           </div>
         </div>
@@ -715,11 +771,11 @@
         <div class="day-num"><span class="d">12</span><span class="m">Jun</span></div>
         <div class="day-content">
           <div class="day-label">Día 3</div>
-          <div class="day-title">El corazón de la capital</div>
+          <div class="day-title">Bernabéu, compras y el corazón de Madrid</div>
           <div class="day-activities">
-            <span class="activity">☀️ Plaza Mayor</span>
+            <span class="activity">⚽ Santiago Bernabéu</span>
+            <span class="activity">🛍️ Gran Vía · Compras</span>
             <span class="activity">👑 Palacio Real</span>
-            <span class="activity">🛍️ Gran Vía</span>
             <span class="activity">🏙️ Rooftop al atardecer</span>
           </div>
         </div>
@@ -729,7 +785,7 @@
 
     <div class="tip-box fade-in">
       <div class="tip-box-title">💡 Consejo de experto</div>
-      <p>Reserven el Prado online — evitan la fila. El Retiro es gratis y en junio está precioso. Para tapas, el Mercado de San Miguel es turístico pero divertido; para algo más auténtico busquen La Latina.</p>
+      <p>Reserven el Prado online — evitan la fila. El Retiro es gratis y en junio está precioso. El tour del Bernabéu también requiere reserva online. Para tapas, el Mercado de San Miguel es divertido; para algo más auténtico busquen La Latina.</p>
     </div>
 
     <div class="hotel-rec fade-in">
@@ -741,14 +797,41 @@
       </div>
     </div>
 
+    <div class="reserve-box fade-in">
+      <div class="reserve-title">📋 Reservas · Madrid Inicio</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-label">Vuelo E9-858 · SJO → MAD</div>
+            <div class="reserve-value">Sale Mar 9 jun · 7:40 PM (SJO) · Llega Mié 10 jun · 1:55 PM (MAD) · 10h 15min</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏠</div>
+          <div>
+            <div class="reserve-label">Hospedaje · Airbnb · Solo 3 personas</div>
+            <div class="reserve-value">Pendiente · Malasaña o Chueca · 1–2 hab · 10–13 jun</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🚄</div>
+          <div>
+            <div class="reserve-label">Tren Nº 06501 OUIGO · 13 jun ✅</div>
+            <div class="reserve-value">✅ RESERVADO · Sale 9:31 AM (Atocha) · Llega 12:58 PM (Sants) · Coche 7 · Asientos 1E, 2E y 2D · €58.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="city-divider"></div>
 
     <div class="transport-card fade-in">
       <div class="transport-icon">🚄</div>
       <div class="transport-text">
-        <div class="transport-label">Próximo movimiento</div>
+        <div class="transport-label">Próximo movimiento · Sábado 13 de junio · Tren Nº 06501</div>
         <div class="transport-route">Madrid → Barcelona</div>
-        <div class="transport-detail">Tren AVE · ~2h40min · Reservar en renfe.com con anticipación</div>
+        <div class="transport-detail">OUIGO PLUS · Sale 9:31 AM (Atocha-Almudena Grandes) · Llega 12:58 PM (Barcelona-Sants) · Coche 7 · Altura Tierra · Asientos 1E, 2E y 2D · €58.00</div>
       </div>
     </div>
 
@@ -767,6 +850,7 @@
         <div class="city-tag">🇪🇸 España · Parada 2</div>
         <h2 class="city-name">Barcelona</h2>
         <p class="city-dates">13 – 17 de junio · 4 noches</p>
+        <p style="font-size:0.78rem; margin-top:0.4rem; background:#D1F2EB; color:#0E6655; padding:0.3rem 0.8rem; border-radius:99px; display:inline-block;">🎉 ¡El grupo completo se reúne aquí! · 6 viajeros</p>
       </div>
     </div>
 
@@ -775,13 +859,13 @@
       <div class="day-card fade-in">
         <div class="day-num"><span class="d">13</span><span class="m">Jun</span></div>
         <div class="day-content">
-          <div class="day-label">Día 1</div>
-          <div class="day-title">Llegada en AVE y primer paseo</div>
+          <div class="day-label">Día 1 · ¡Reunión familiar!</div>
+          <div class="day-title">El grupo completo se reúne en Barcelona</div>
           <div class="day-activities">
-            <span class="activity">🚄 Llegada AVE</span>
-            <span class="activity">🏨 Check-in Eixample</span>
-            <span class="activity">🚶 Las Ramblas</span>
-            <span class="activity">🍻 Bar El Born</span>
+            <span class="activity">🚄 Llegada AVE (3) · 12:58 PM</span>
+            <span class="activity">🚗 Papás + hermana desde Grenoble</span>
+            <span class="activity">🏨 Check-in Eixample · 6 personas</span>
+            <span class="activity">🥂 Cena de reunión familiar</span>
           </div>
         </div>
       </div>
@@ -790,11 +874,11 @@
         <div class="day-num"><span class="d">14</span><span class="m">Jun</span></div>
         <div class="day-content">
           <div class="day-label">Día 2</div>
-          <div class="day-title">Gaudí al máximo</div>
+          <div class="day-title">Gaudí · Casa Batlló y Eixample</div>
           <div class="day-activities">
-            <span class="activity">⛪ Sagrada Família</span>
-            <span class="activity">🌿 Parque Güell</span>
             <span class="activity">🏠 Casa Batlló (exterior)</span>
+            <span class="activity">🏛️ La Pedrera · Passeig de Gràcia</span>
+            <span class="activity">🛍️ Eixample</span>
             <span class="activity">🍷 Cena en Gràcia</span>
           </div>
         </div>
@@ -804,12 +888,12 @@
         <div class="day-num"><span class="d">15</span><span class="m">Jun</span></div>
         <div class="day-content">
           <div class="day-label">Día 3</div>
-          <div class="day-title">Historia, mar y buen ambiente</div>
+          <div class="day-title">Sagrada Família, Gótico y playa</div>
           <div class="day-activities">
+            <span class="activity">⛪ Sagrada Família · 10:00 AM</span>
             <span class="activity">🏛️ Barrio Gótico</span>
             <span class="activity">🛍️ El Born</span>
             <span class="activity">🌊 Playa Barceloneta</span>
-            <span class="activity">🐟 Mariscos al atardecer</span>
           </div>
         </div>
       </div>
@@ -841,6 +925,26 @@
         <div class="hotel-label">Hospedaje recomendado</div>
         <div class="hotel-name">Airbnb en Eixample · 3 habitaciones</div>
         <div class="hotel-detail">Entre Passeig de Gràcia y la Sagrada Família. Eviten el Gótico para dormir — es muy ruidoso de noche.</div>
+      </div>
+    </div>
+
+    <div class="reserve-box fade-in">
+      <div class="reserve-title">📋 Reservas · Barcelona</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🏠</div>
+          <div>
+            <div class="reserve-label">Hospedaje · Airbnb · 6 personas</div>
+            <div class="reserve-value">Pendiente · Eixample · 3 hab · 13–17 jun · Coordinar llegada papás desde Grenoble</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">⛪</div>
+          <div>
+            <div class="reserve-label">Sagrada Família · 15 jun · 10:00 AM ✅</div>
+            <div class="reserve-value">✅ RESERVADO · Entrada con Audioguía · Nº 01307000 · Basílica C/ de Mallorca, 401</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -883,7 +987,7 @@
           <div class="day-activities">
             <span class="activity">✈️ Llegada Fiumicino</span>
             <span class="activity">🏨 Check-in Hotel</span>
-            <span class="activity">⛲ Fontana di Trevi (primera vez)</span>
+            <span class="activity">⛲ Fontana di Trevi · Pura mañana (menos gente)</span>
             <span class="activity">🍝 Cena en Trastevere</span>
           </div>
         </div>
@@ -944,6 +1048,40 @@
         <div class="hotel-label">Hospedaje recomendado · Hotel (excepción)</div>
         <div class="hotel-name">Hotel Artemide ⭐⭐⭐⭐ · 4.8/5 en Google</div>
         <div class="hotel-detail">Via Nazionale · Céntrico, desayuno incluido, rooftop bar. Reservar 3 habitaciones. Alternativa: Otivm Hotel (boutique, cerca del Capitolio).</div>
+      </div>
+    </div>
+
+    <div class="reserve-box fade-in">
+      <div class="reserve-title">📋 Reservas · Roma</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-label">Vuelo BCN → Roma · 17 jun</div>
+            <div class="reserve-value">Por confirmar · Salida ideal 8–10 AM</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏨</div>
+          <div>
+            <div class="reserve-label">Hotel Artemide · 3 habitaciones</div>
+            <div class="reserve-value">Pendiente · Via Nazionale · 17–21 jun</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏛️</div>
+          <div>
+            <div class="reserve-label">Coliseo + Foro Romano</div>
+            <div class="reserve-value">Reserva obligatoria en coopculture.it</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">✝️</div>
+          <div>
+            <div class="reserve-label">Museos Vaticanos + Capilla Sixtina</div>
+            <div class="reserve-value">Reserva obligatoria en museivaticani.va</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1020,12 +1158,12 @@
         <div class="day-num"><span class="d">24</span><span class="m">Jun</span></div>
         <div class="day-content">
           <div class="day-label">Día 3</div>
-          <div class="day-title">El Louvre, Montmartre y el Sena</div>
+          <div class="day-title">Louvre, Champs-Élysées y Montmartre</div>
           <div class="day-activities">
-            <span class="activity">🖼️ Museo del Louvre</span>
+            <span class="activity">🖼️ Museo del Louvre · Mañana</span>
+            <span class="activity">🛣️ Champs-Élysées</span>
+            <span class="activity">🏟️ Parc des Princes (exterior)</span>
             <span class="activity">⛪ Montmartre + Sacré-Cœur</span>
-            <span class="activity">🥐 Café parisino</span>
-            <span class="activity">🌙 Última noche en París</span>
           </div>
         </div>
       </div>
@@ -1043,6 +1181,40 @@
         <div class="hotel-label">Hospedaje recomendado</div>
         <div class="hotel-name">Airbnb en Le Marais o Saint-Germain · 3 habitaciones</div>
         <div class="hotel-detail">Zonas centrales, caminables a todo. Alt. hotel: Hôtel d'Orsay (4.8/5) — boutique, tranquilo, junto al Sena.</div>
+      </div>
+    </div>
+
+    <div class="reserve-box fade-in">
+      <div class="reserve-title">📋 Reservas · París</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-label">Vuelo Roma → París · 22 jun</div>
+            <div class="reserve-value">Por confirmar · Salida temprana desde FCO</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏠</div>
+          <div>
+            <div class="reserve-label">Hospedaje · Airbnb</div>
+            <div class="reserve-value">Pendiente · Le Marais o St-Germain · 3 hab · 22–25 jun</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏰</div>
+          <div>
+            <div class="reserve-label">Disneyland París · 23 jun</div>
+            <div class="reserve-value">Pendiente · disneylandparis.com · ~€85–110 p/p</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🖼️</div>
+          <div>
+            <div class="reserve-label">Museo del Louvre · 24 jun</div>
+            <div class="reserve-value">Pendiente · ticketlouvre.fr · Reserva recomendada</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1163,14 +1335,41 @@
       </div>
     </div>
 
+    <div class="reserve-box fade-in">
+      <div class="reserve-title">📋 Reservas · Madrid Final</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-label">Vuelo París → Madrid · 25 jun</div>
+            <div class="reserve-value">Por confirmar · Llegada Madrid</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏠</div>
+          <div>
+            <div class="reserve-label">Hospedaje · Airbnb con terraza</div>
+            <div class="reserve-value">Pendiente · La Latina o Lavapiés · 3 hab · 25–30 jun</div>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-label">Vuelo regreso · 30 jun</div>
+            <div class="reserve-value">Por confirmar · Madrid → Costa Rica 🇨🇷</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="city-divider"></div>
 
     <div class="transport-card fade-in">
       <div class="transport-icon">🏠</div>
       <div class="transport-text">
-        <div class="transport-label">Regreso · 30 de junio</div>
+        <div class="transport-label">Regreso · Martes 30 de junio · Vuelo E9-857</div>
         <div class="transport-route">Madrid → Costa Rica 🇨🇷</div>
-        <div class="transport-detail">Con el corazón lleno de Europa y maletas llenas de recuerdos</div>
+        <div class="transport-detail">Sale 2:20 PM (MAD) · Llega 5:10 PM (SJO) · 10h 50min · Con el corazón lleno de Europa 🫶</div>
       </div>
     </div>
 
@@ -1216,7 +1415,7 @@
 
     <div class="summary-total fade-in">
       <div class="summary-total-num">20</div>
-      <div class="summary-total-label">Noches · 6 Viajeros · Junio 2025</div>
+      <div class="summary-total-label">Noches · 6 Viajeros · Junio 2026</div>
       <p style="color: #7EC8E3; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; margin-top:1.5rem;">
         "El mundo es un libro, y quienes no viajan<br>solo leen una página."
       </p>
