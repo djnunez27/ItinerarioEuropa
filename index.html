@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Europa 2025 · Itinerario</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --gold: #C9973A;
+    --gold-light: #E8C36A;
+    --dark: #1A1410;
+    --madrid: #C0392B;
+    --barcelona: #2471A3;
+    --roma: #28B463;
+    --paris: #8E44AD;
+    --text: #2C2416;
+    --muted: #7A6F60;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero-map {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cpath d='M100 300 Q200 200 350 280 Q500 350 600 250 Q700 180 750 220' stroke='%23C9973A' stroke-width='3' fill='none'/%3E%3Ccircle cx='350' cy='280' r='8' fill='%23C9973A'/%3E%3Ccircle cx='500' cy='320' r='8' fill='%23C9973A'/%3E%3Ccircle cx='600' cy='250' r='8' fill='%23C9973A'/%3E%3Ccircle cx='700' cy='200' r='8' fill='%23C9973A'/%3E%3C/svg%3E");
+    background-size: cover;
+  }
+
+  /* animated grain overlay */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.2s;
+  }
+
+  .hero-flag-row {
+    display: flex;
+    gap: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.4s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+    text-align: center;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.5s;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: #9A8F80;
+    text-align: center;
+    font-style: italic;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.7s;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    animation: fadeUp 1s ease both;
+    animation-delay: 0.9s;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6B6055;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #6B6055;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1s ease both, bounce 2s ease infinite;
+    animation-delay: 1.5s, 2.5s;
+  }
+
+  .scroll-hint::after {
+    content: '↓';
+    font-size: 1.2rem;
+  }
+
+  /* ── ROUTE BAR ── */
+  .route-bar {
+    background: var(--dark);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #2A2318;
+  }
+
+  .route-stop {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .route-stop a {
+    color: #9A8F80;
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .route-stop a:hover { color: var(--gold); }
+
+  .route-arrow {
+    color: var(--gold);
+    font-size: 0.8rem;
+    padding: 0 0.2rem;
+  }
+
+  /* ── SECTION BASE ── */
+  .city-section {
+    padding: 5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .city-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .city-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.12;
+    color: var(--text);
+  }
+
+  .city-meta {}
+
+  .city-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    margin-bottom: 0.8rem;
+  }
+
+  .city-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .city-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  /* ── DAYS GRID ── */
+  .days-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .day-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .day-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .day-num .d {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .day-num .m {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  .day-content {
+    padding: 1.2rem 1.5rem;
+    border-left: 1px solid #F0EBE0;
+  }
+
+  .day-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+  }
+
+  .day-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .activity {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 99px;
+    background: var(--cream);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* ── TRANSPORT CARD ── */
+  .transport-card {
+    background: var(--dark);
+    color: var(--cream);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .transport-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .transport-text {}
+  .transport-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6B6055;
+    margin-bottom: 0.2rem;
+  }
+
+  .transport-route {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .transport-detail {
+    font-size: 0.8rem;
+    color: #9A8F80;
+    margin-top: 0.2rem;
+  }
+
+  /* ── DIVIDER ── */
+  .city-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D4C8B0, transparent);
+    margin: 1rem 0;
+  }
+
+  /* ── TIPS BOX ── */
+  .tip-box {
+    background: linear-gradient(135deg, #FDF8EE, #F5EDD8);
+    border: 1px solid #E2D5B8;
+    border-left: 4px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tip-box-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .tip-box p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── HOTEL RECOMMENDATION ── */
+  .hotel-rec {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hotel-icon {
+    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    flex-shrink: 0;
+  }
+
+  .hotel-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .hotel-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .hotel-detail {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-section {
+    background: var(--dark);
+    padding: 5rem 1.5rem;
+  }
+
+  .summary-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .summary-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #6B6055;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .summary-card {
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .summary-card-flag {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-card-city {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .summary-card-nights {
+    font-size: 0.75rem;
+    color: #9A8F80;
+  }
+
+  .summary-total {
+    border-top: 1px solid #2A2318;
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .summary-total-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .summary-total-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6B6055;
+    margin-top: 0.5rem;
+  }
+
+  /* ── CITY COLORS ── */
+  .madrid { --city-color: #C0392B; --city-bg: #FDECEA; }
+  .barcelona { --city-color: #2471A3; --city-bg: #EAF2FB; }
+  .roma { --city-color: #27AE60; --city-bg: #EAFAF1; }
+  .paris { --city-color: #8E44AD; --city-bg: #F5EEF8; }
+
+  .city-tag { background: var(--city-bg); color: var(--city-color); }
+  .city-name { color: var(--city-color); }
+  .day-num { background: var(--city-color); }
+  .day-card:hover .day-title { color: var(--city-color); }
+
+  /* ── MADRID FINAL ── */
+  .madrid-final .city-name { color: #C0392B; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DISNEY SPECIAL ── */
+  .disney-card {
+    background: linear-gradient(135deg, #1a0533, #2d0d5e);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+    align-items: center;
+    box-shadow: 0 4px 30px rgba(142, 68, 173, 0.3);
+  }
+
+  .disney-icon {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .disney-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #E8C36A;
+    margin-bottom: 0.2rem;
+  }
+
+  .disney-detail {
+    font-size: 0.82rem;
+    color: #B39DDB;
+    line-height: 1.5;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .city-header { grid-template-columns: 1fr; }
+    .city-number { font-size: 3rem; }
+    .day-card { grid-template-columns: 65px 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .route-bar { display: none; }
+    .transport-card { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-map"></div>
+  <div class="hero-badge">Junio 2025 · 6 viajeros · Costa Rica → Europa</div>
+  <div class="hero-flag-row">🇨🇷 ✈️ 🇪🇸 🇮🇹 🇫🇷</div>
+  <h1 class="hero-title">Nuestra <em>Europa</em></h1>
+  <p class="hero-subtitle">Un viaje de 20 noches por cuatro ciudades extraordinarias</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">4</span>
+      <span class="hero-stat-label">Países</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">20</span>
+      <span class="hero-stat-label">Noches</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">6</span>
+      <span class="hero-stat-label">Viajeros</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">∞</span>
+      <span class="hero-stat-label">Memorias</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Explorar</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STICKY ROUTE BAR
+══════════════════════════════════════════ -->
+<nav class="route-bar">
+  <div class="route-stop"><a href="#madrid-inicio">🇪🇸 Madrid</a></div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop"><a href="#barcelona">🇪🇸 Barcelona</a></div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop"><a href="#roma">🇮🇹 Roma</a></div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop"><a href="#paris">🇫🇷 París</a></div>
+  <div class="route-arrow">→</div>
+  <div class="route-stop"><a href="#madrid-final">🇪🇸 Madrid</a></div>
+  <div class="route-arrow">✈️</div>
+  <div class="route-stop"><a href="#madrid-final">🇨🇷 Home</a></div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     1. MADRID INICIO
+══════════════════════════════════════════ -->
+<section id="madrid-inicio" class="madrid">
+  <div class="city-section">
+
+    <div class="city-header fade-in">
+      <div class="city-number">01</div>
+      <div class="city-meta">
+        <div class="city-tag">🇪🇸 España · Parada 1</div>
+        <h2 class="city-name">Madrid</h2>
+        <p class="city-dates">10 – 13 de junio · 3 noches</p>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">10</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 1</div>
+          <div class="day-title">Llegada y primer sabor madrileño</div>
+          <div class="day-activities">
+            <span class="activity">✈️ Llegada</span>
+            <span class="activity">🏨 Check-in</span>
+            <span class="activity">🚶 Exploración libre</span>
+            <span class="activity">🥂 Primera cena española</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">11</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 2</div>
+          <div class="day-title">Arte, historia y tapas</div>
+          <div class="day-activities">
+            <span class="activity">🎨 Museo del Prado</span>
+            <span class="activity">🌿 Parque del Retiro</span>
+            <span class="activity">🫙 Ruta de tapas</span>
+            <span class="activity">🌃 Malasaña de noche</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">12</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 3</div>
+          <div class="day-title">El corazón de la capital</div>
+          <div class="day-activities">
+            <span class="activity">☀️ Plaza Mayor</span>
+            <span class="activity">👑 Palacio Real</span>
+            <span class="activity">🛍️ Gran Vía</span>
+            <span class="activity">🏙️ Rooftop al atardecer</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box fade-in">
+      <div class="tip-box-title">💡 Consejo de experto</div>
+      <p>Reserven el Prado online — evitan la fila. El Retiro es gratis y en junio está precioso. Para tapas, el Mercado de San Miguel es turístico pero divertido; para algo más auténtico busquen La Latina.</p>
+    </div>
+
+    <div class="hotel-rec fade-in">
+      <div class="hotel-icon">🏠</div>
+      <div>
+        <div class="hotel-label">Hospedaje recomendado</div>
+        <div class="hotel-name">Airbnb en Malasaña o Chueca · 3 habitaciones</div>
+        <div class="hotel-detail">Central, vibrante, a pie de todo. Busquen apartamento completo para 6.</div>
+      </div>
+    </div>
+
+    <div class="city-divider"></div>
+
+    <div class="transport-card fade-in">
+      <div class="transport-icon">🚄</div>
+      <div class="transport-text">
+        <div class="transport-label">Próximo movimiento</div>
+        <div class="transport-route">Madrid → Barcelona</div>
+        <div class="transport-detail">Tren AVE · ~2h40min · Reservar en renfe.com con anticipación</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     2. BARCELONA
+══════════════════════════════════════════ -->
+<section id="barcelona" class="barcelona">
+  <div class="city-section">
+
+    <div class="city-header fade-in">
+      <div class="city-number">02</div>
+      <div class="city-meta">
+        <div class="city-tag">🇪🇸 España · Parada 2</div>
+        <h2 class="city-name">Barcelona</h2>
+        <p class="city-dates">13 – 17 de junio · 4 noches</p>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">13</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 1</div>
+          <div class="day-title">Llegada en AVE y primer paseo</div>
+          <div class="day-activities">
+            <span class="activity">🚄 Llegada AVE</span>
+            <span class="activity">🏨 Check-in Eixample</span>
+            <span class="activity">🚶 Las Ramblas</span>
+            <span class="activity">🍻 Bar El Born</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">14</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 2</div>
+          <div class="day-title">Gaudí al máximo</div>
+          <div class="day-activities">
+            <span class="activity">⛪ Sagrada Família</span>
+            <span class="activity">🌿 Parque Güell</span>
+            <span class="activity">🏠 Casa Batlló (exterior)</span>
+            <span class="activity">🍷 Cena en Gràcia</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">15</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 3</div>
+          <div class="day-title">Historia, mar y buen ambiente</div>
+          <div class="day-activities">
+            <span class="activity">🏛️ Barrio Gótico</span>
+            <span class="activity">🛍️ El Born</span>
+            <span class="activity">🌊 Playa Barceloneta</span>
+            <span class="activity">🐟 Mariscos al atardecer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">16</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 4</div>
+          <div class="day-title">Día libre y preparar partida</div>
+          <div class="day-activities">
+            <span class="activity">🎨 Picasso o MNAC</span>
+            <span class="activity">🛍️ Compras Passeig de Gràcia</span>
+            <span class="activity">🌅 Bunkers del Carmel (vistas)</span>
+            <span class="activity">🧳 Organizar equipaje</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box fade-in">
+      <div class="tip-box-title">💡 Consejo de experto</div>
+      <p>La Sagrada Família se reserva online obligatoriamente — las entradas se agotan semanas antes en junio. Los Bunkers del Carmel al atardecer son el mirador más espectacular de la ciudad y van pocos turistas. Para la playa, la Barceloneta es la más accesible pero Bogatell es más tranquila.</p>
+    </div>
+
+    <div class="hotel-rec fade-in">
+      <div class="hotel-icon">🏠</div>
+      <div>
+        <div class="hotel-label">Hospedaje recomendado</div>
+        <div class="hotel-name">Airbnb en Eixample · 3 habitaciones</div>
+        <div class="hotel-detail">Entre Passeig de Gràcia y la Sagrada Família. Eviten el Gótico para dormir — es muy ruidoso de noche.</div>
+      </div>
+    </div>
+
+    <div class="city-divider"></div>
+
+    <div class="transport-card fade-in">
+      <div class="transport-icon">✈️</div>
+      <div class="transport-text">
+        <div class="transport-label">Próximo movimiento · 17 de junio temprano</div>
+        <div class="transport-route">Barcelona → Roma</div>
+        <div class="transport-detail">Vuelo desde El Prat (BCN) · ~2h · Salida ideal 8–10am para aprovechar la tarde en Roma</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     3. ROMA
+══════════════════════════════════════════ -->
+<section id="roma" class="roma">
+  <div class="city-section">
+
+    <div class="city-header fade-in">
+      <div class="city-number">03</div>
+      <div class="city-meta">
+        <div class="city-tag">🇮🇹 Italia · Parada 3</div>
+        <h2 class="city-name">Roma</h2>
+        <p class="city-dates">17 – 21 de junio · 4 noches</p>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">17</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 1</div>
+          <div class="day-title">Benvenuti a Roma</div>
+          <div class="day-activities">
+            <span class="activity">✈️ Llegada Fiumicino</span>
+            <span class="activity">🏨 Check-in Hotel</span>
+            <span class="activity">⛲ Fontana di Trevi (primera vez)</span>
+            <span class="activity">🍝 Cena en Trastevere</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">18</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 2</div>
+          <div class="day-title">La Roma Antigua</div>
+          <div class="day-activities">
+            <span class="activity">🏛️ Coliseo</span>
+            <span class="activity">🏺 Foro Romano</span>
+            <span class="activity">🏔️ Palatino</span>
+            <span class="activity">🌙 Passeggiata nocturna</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">19</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 3</div>
+          <div class="day-title">La Ciudad del Vaticano</div>
+          <div class="day-activities">
+            <span class="activity">✝️ Museos Vaticanos</span>
+            <span class="activity">🎨 Capilla Sixtina</span>
+            <span class="activity">⛪ San Pedro</span>
+            <span class="activity">🧀 Mercado Campo de' Fiori</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">20</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 4</div>
+          <div class="day-title">Trastevere, gelato y despedida</div>
+          <div class="day-activities">
+            <span class="activity">🌅 Castel Sant'Angelo</span>
+            <span class="activity">🛍️ Via del Corso</span>
+            <span class="activity">🍨 Gelato artesanal</span>
+            <span class="activity">🍷 Última cena italiana</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box fade-in">
+      <div class="tip-box-title">💡 Consejo de experto</div>
+      <p>El Coliseo y los Museos Vaticanos REQUIEREN reserva online — en junio se agotan hasta con semanas de anticipación. Para la Capilla Sixtina, lleguen con tour guiado; la experiencia es incomparablemente mejor. Trastevere para cenar es obligatorio: auténtico, bonito y más barato que el centro.</p>
+    </div>
+
+    <div class="hotel-rec fade-in">
+      <div class="hotel-icon">🏨</div>
+      <div>
+        <div class="hotel-label">Hospedaje recomendado · Hotel (excepción)</div>
+        <div class="hotel-name">Hotel Artemide ⭐⭐⭐⭐ · 4.8/5 en Google</div>
+        <div class="hotel-detail">Via Nazionale · Céntrico, desayuno incluido, rooftop bar. Reservar 3 habitaciones. Alternativa: Otivm Hotel (boutique, cerca del Capitolio).</div>
+      </div>
+    </div>
+
+    <div class="city-divider"></div>
+
+    <div class="transport-card fade-in">
+      <div class="transport-icon">✈️</div>
+      <div class="transport-text">
+        <div class="transport-label">Próximo movimiento · 22 de junio</div>
+        <div class="transport-route">Roma → París</div>
+        <div class="transport-detail">Vuelo desde Fiumicino (FCO) · ~2h20min · Salida temprano para máximo aprovechamiento</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     4. PARÍS
+══════════════════════════════════════════ -->
+<section id="paris" class="paris">
+  <div class="city-section">
+
+    <div class="city-header fade-in">
+      <div class="city-number">04</div>
+      <div class="city-meta">
+        <div class="city-tag">🇫🇷 Francia · Parada 4</div>
+        <h2 class="city-name">París</h2>
+        <p class="city-dates">22 – 25 de junio · 3 noches</p>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">22</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 1</div>
+          <div class="day-title">Bonjour Paris</div>
+          <div class="day-activities">
+            <span class="activity">✈️ Llegada CDG</span>
+            <span class="activity">🏨 Check-in Le Marais/St-Germain</span>
+            <span class="activity">🗼 Torre Eiffel (tarde)</span>
+            <span class="activity">🚶 Paseo por el Sena</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in" style="background: linear-gradient(to right, white 79px, #FFF9FF 80px);">
+        <div class="day-num" style="background: linear-gradient(135deg, #8E44AD, #6C3483);">
+          <span class="d">23</span><span class="m">Jun</span>
+        </div>
+        <div class="day-content">
+          <div class="day-label">Día 2 · ¡Día Especial!</div>
+          <div class="day-title">✨ Disneyland París</div>
+          <div class="day-activities">
+            <span class="activity">🚂 RER A directo al parque</span>
+            <span class="activity">🎢 Disneyland Park</span>
+            <span class="activity">🏰 Castillo de la Bella Durmiente</span>
+            <span class="activity">🎆 Desfile + fuegos artificiales</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="disney-card fade-in">
+        <div class="disney-icon">🏰</div>
+        <div>
+          <div class="disney-title">Disneyland París · Tips</div>
+          <div class="disney-detail">Tomen el RER A desde el centro (~40 min, muy fácil). Compren tickets en disneylandparis.com con anticipación (~€85–110 p/p en junio). Lleguen al abrir para aprovechar antes de las filas del mediodía.</div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in" style="margin-top: 1rem;">
+        <div class="day-num"><span class="d">24</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 3</div>
+          <div class="day-title">El Louvre, Montmartre y el Sena</div>
+          <div class="day-activities">
+            <span class="activity">🖼️ Museo del Louvre</span>
+            <span class="activity">⛪ Montmartre + Sacré-Cœur</span>
+            <span class="activity">🥐 Café parisino</span>
+            <span class="activity">🌙 Última noche en París</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box fade-in">
+      <div class="tip-box-title">💡 Consejo de experto</div>
+      <p>El Louvre es enorme — prioricen salas antes de ir: Mona Lisa, Venus de Milo, antigüedades egipcias. Reserven entrada online. Montmartre es más auténtico en la mañana antes de que lleguen los tours. La Torre Eiffel de noche brillando es una experiencia que no tiene precio — vale quedarse a verla.</p>
+    </div>
+
+    <div class="hotel-rec fade-in">
+      <div class="hotel-icon">🏠</div>
+      <div>
+        <div class="hotel-label">Hospedaje recomendado</div>
+        <div class="hotel-name">Airbnb en Le Marais o Saint-Germain · 3 habitaciones</div>
+        <div class="hotel-detail">Zonas centrales, caminables a todo. Alt. hotel: Hôtel d'Orsay (4.8/5) — boutique, tranquilo, junto al Sena.</div>
+      </div>
+    </div>
+
+    <div class="city-divider"></div>
+
+    <div class="transport-card fade-in">
+      <div class="transport-icon">✈️</div>
+      <div class="transport-text">
+        <div class="transport-label">Próximo movimiento · 25 de junio</div>
+        <div class="transport-route">París → Madrid</div>
+        <div class="transport-detail">Vuelo desde CDG · ~2h20min · Regresan a España para el tramo final</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     5. MADRID FINAL
+══════════════════════════════════════════ -->
+<section id="madrid-final" class="madrid madrid-final">
+  <div class="city-section">
+
+    <div class="city-header fade-in">
+      <div class="city-number">05</div>
+      <div class="city-meta">
+        <div class="city-tag">🇪🇸 España · Tramo Final</div>
+        <h2 class="city-name">Madrid · El Cierre</h2>
+        <p class="city-dates">25 – 30 de junio · 5 noches</p>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">25</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 1</div>
+          <div class="day-title">De regreso a España</div>
+          <div class="day-activities">
+            <span class="activity">✈️ Llegada desde París</span>
+            <span class="activity">🏨 Check-in La Latina</span>
+            <span class="activity">🍺 Cañas en terraza</span>
+            <span class="activity">😌 Descanso merecido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">26</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 2</div>
+          <div class="day-title">Excursión a Toledo</div>
+          <div class="day-activities">
+            <span class="activity">🚆 Tren desde Atocha</span>
+            <span class="activity">⚔️ Ciudad Medieval</span>
+            <span class="activity">🕌 Catedral de Toledo</span>
+            <span class="activity">🗡️ Espadas toledanas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">27</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 3</div>
+          <div class="day-title">Excursión a Segovia</div>
+          <div class="day-activities">
+            <span class="activity">🚆 Tren desde Atocha</span>
+            <span class="activity">🏰 Alcázar de Segovia</span>
+            <span class="activity">🏛️ Acueducto Romano</span>
+            <span class="activity">🍖 Cochinillo asado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">28</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 4</div>
+          <div class="day-title">Compras y Madrid profundo</div>
+          <div class="day-activities">
+            <span class="activity">🛍️ El Rastro (mercado)</span>
+            <span class="activity">☕ Cafés con encanto</span>
+            <span class="activity">🏙️ Rooftop Círculo de BB.AA.</span>
+            <span class="activity">🥩 Cena: cocido madrileño</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-card fade-in">
+        <div class="day-num"><span class="d">29</span><span class="m">Jun</span></div>
+        <div class="day-content">
+          <div class="day-label">Día 5</div>
+          <div class="day-title">Última noche europea</div>
+          <div class="day-activities">
+            <span class="activity">🎁 Souvenirs y regalos</span>
+            <span class="activity">📸 Fotos en los favoritos</span>
+            <span class="activity">🥂 Cena de celebración</span>
+            <span class="activity">🧳 Maletas listas</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tip-box fade-in">
+      <div class="tip-box-title">💡 Consejo de experto</div>
+      <p>Toledo y Segovia desde Madrid son perfectas en tren — salen de Atocha y en 30-45 minutos están ahí. El Rastro es sábado o domingo por la mañana. Para el rooftop, el del Círculo de Bellas Artes es el mejor de Madrid y no requiere reserva.</p>
+    </div>
+
+    <div class="hotel-rec fade-in">
+      <div class="hotel-icon">🏠</div>
+      <div>
+        <div class="hotel-label">Hospedaje recomendado · El más importante</div>
+        <div class="hotel-name">Airbnb en La Latina o Lavapiés · Con terraza</div>
+        <div class="hotel-detail">5 noches merece el mejor apartamento del viaje. Busquen uno con terraza o azotea — Madrid en junio en terraza es pura magia.</div>
+      </div>
+    </div>
+
+    <div class="city-divider"></div>
+
+    <div class="transport-card fade-in">
+      <div class="transport-icon">🏠</div>
+      <div class="transport-text">
+        <div class="transport-label">Regreso · 30 de junio</div>
+        <div class="transport-route">Madrid → Costa Rica 🇨🇷</div>
+        <div class="transport-detail">Con el corazón lleno de Europa y maletas llenas de recuerdos</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SUMMARY
+══════════════════════════════════════════ -->
+<section class="summary-section">
+  <div class="summary-inner">
+
+    <h2 class="summary-title fade-in">Resumen del <em style="color:var(--gold);font-family:'Playfair Display',serif;font-style:italic;">Viaje</em></h2>
+    <p class="summary-sub fade-in">20 noches · 4 ciudades · Una familia</p>
+
+    <div class="summary-grid fade-in">
+      <div class="summary-card" style="background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3);">
+        <div class="summary-card-flag">🇪🇸</div>
+        <div class="summary-card-city">Madrid</div>
+        <div class="summary-card-nights">3 noches · 10–13 jun</div>
+      </div>
+      <div class="summary-card" style="background: rgba(36,113,163,0.15); border: 1px solid rgba(36,113,163,0.3);">
+        <div class="summary-card-flag">🇪🇸</div>
+        <div class="summary-card-city">Barcelona</div>
+        <div class="summary-card-nights">4 noches · 13–17 jun</div>
+      </div>
+      <div class="summary-card" style="background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3);">
+        <div class="summary-card-flag">🇮🇹</div>
+        <div class="summary-card-city">Roma</div>
+        <div class="summary-card-nights">4 noches · 17–21 jun</div>
+      </div>
+      <div class="summary-card" style="background: rgba(142,68,173,0.15); border: 1px solid rgba(142,68,173,0.3);">
+        <div class="summary-card-flag">🇫🇷</div>
+        <div class="summary-card-city">París</div>
+        <div class="summary-card-nights">3 noches · 22–25 jun</div>
+      </div>
+      <div class="summary-card" style="background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3);">
+        <div class="summary-card-flag">🇪🇸</div>
+        <div class="summary-card-city">Madrid</div>
+        <div class="summary-card-nights">5 noches · 25–30 jun</div>
+      </div>
+    </div>
+
+    <div class="summary-total fade-in">
+      <div class="summary-total-num">20</div>
+      <div class="summary-total-label">Noches · 6 Viajeros · Junio 2025</div>
+      <p style="color: #6B6055; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; margin-top:1.5rem;">
+        "El mundo es un libro, y quienes no viajan<br>solo leen una página."
+      </p>
+      <p style="color: #3A3028; font-size: 0.7rem; letter-spacing: 0.15em; margin-top:0.5rem;">— San Agustín</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
